@@ -64,12 +64,6 @@ export default class WorkerPool extends EventEmitter {
     }
 
     runTask(task, callback) {
-        console.log(
-            "free workers:",
-            this.freeWorkers.length,
-            "; tasks: ",
-            this.tasks.length
-        );
         if (this.freeWorkers.length === 0) {
             // No free threads, wait until a worker thread becomes free.
             this.tasks.push({ task, callback });
